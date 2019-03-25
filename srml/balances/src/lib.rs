@@ -166,7 +166,7 @@ decl_storage! {
 						// >= begin+length it should be <= 0
 
 						let per_block = if length.is_zero() {
-							T::Balance::zero()
+							balance
 						} else {
 							balance / length
 						};
