@@ -165,12 +165,7 @@ decl_storage! {
 						// <= begin it should be >= balance
 						// >= begin+length it should be <= 0
 
-						let per_block = if length.is_zero() {
-							balance
-						} else {
-							balance / length
-						};
-
+						let per_block = balance / length.max(As::sa(1));
 						let offset = begin * per_block + balance;
 
 						(who.clone(), VestingSchedule { offset, per_block })
